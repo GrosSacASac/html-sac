@@ -1,0 +1,50 @@
+{
+  "name": "html-sac",
+  "version": "1.0.0",
+  "description": "html includes at runtime and buildtime",
+  "license": "CC0-1.0",
+  "type": "module",
+  "main": "buildTime/inlineHTML.js",
+  "scripts": {
+    "lint-fix": "eslint --ignore-path .gitignore --fix .",
+    "lint": "eslint --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "filesac": "^11.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-red": "^1.7.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "red"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module",
+      "ecmaFeatures": {}
+    },
+    "env": {
+      "es2020": true,  
+      "browser": true
+    }
+  },
+  "files": [
+    "source",
+    "readme.md",
+    "license.txt",
+    "changelog.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/GrosSacASac/html-sac.git"
+  },
+  "keywords": [
+    "html",
+    "inline",
+    "run",
+    "compile",
+    "time"
+  ]
+}
