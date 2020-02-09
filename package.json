@@ -1,10 +1,10 @@
 {
   "name": "html-sac",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "html includes at runtime and buildtime",
   "license": "CC0-1.0",
   "type": "module",
-  "main": "buildTime/inlineHTML.js",
+  "main": "source/buildTime/inlineHTML.js",
   "scripts": {
     "lint-fix": "eslint --ignore-path .gitignore --fix .",
     "lint": "eslint --ignore-path .gitignore ."
