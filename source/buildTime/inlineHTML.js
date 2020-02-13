@@ -33,15 +33,15 @@ const inlineHTML = function (html, baseDir) {
     return Promise.all(
         allMatches.map(function (match) {
             return textFileContent(path.join(baseDir, match[1]));
-        })
+        }),
     ).then(function (importedHTMLs) {
         return Promise.all(
             importedHTMLs.map(function (importedHTML, i) {
                 return inlineHTML(
                     importedHTML,
-                    path.dirname(path.join(baseDir, allMatches[i][1]))
+                    path.dirname(path.join(baseDir, allMatches[i][1])),
                 );
-            })
+            }),
         );
     }).then(function (importedHTMLs) {
         importedHTMLs.forEach(function (importedHTML, i) {
@@ -67,7 +67,7 @@ Promise.all(inputs.map(textFileContent))
         return Promise.all(newHTMLStrings.map(function (newHTMLString, i) {
             return writeTextInFile(
                 outputs[i],
-                newHTMLString
+                newHTMLString,
             );
         }));
 

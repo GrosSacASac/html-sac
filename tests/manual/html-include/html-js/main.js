@@ -14,5 +14,5 @@ d.feed({
                 picture: `sister.jpg`,
                 bio: `Drinks tons of café.`,
             },
-        ]
+        ],
 });
