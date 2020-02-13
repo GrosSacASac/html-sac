@@ -46,7 +46,6 @@ const inlineHTML = function (html, baseDir) {
     }).then(function (importedHTMLs) {
         importedHTMLs.forEach(function (importedHTML, i) {
             newHTML = newHTML.replace(allMatches[i][0], importedHTML);
-
         });
     }).catch(function (error) {
         console.error(`
@@ -61,7 +60,7 @@ Promise.all(inputs.map(textFileContent))
         return Promise.all(originalHTMLStrings.map(function (originalHTMLString, i) {
             const withOutDevloader = originalHTMLString.replace(devLoaderString, ``)
                 .replace(devLoaderDebug, ``);
-            return inlineHTML(withOutDevloader, path.dirname(0, inputs[i]));
+            return inlineHTML(withOutDevloader, path.dirname(inputs[i]));
         }));
     }).then(function (newHTMLStrings) {
         return Promise.all(newHTMLStrings.map(function (newHTMLString, i) {
@@ -71,6 +70,4 @@ Promise.all(inputs.map(textFileContent))
             );
         }));
 
-    }).catch(function (reason) {
-        console.error(`inlineHTML.js failed: ${reason}`);
-    });
+    })
