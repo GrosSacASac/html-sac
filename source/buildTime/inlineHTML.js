@@ -3,16 +3,16 @@ import path from "path";
 
 
 const cliInputs = process.argv.slice(2);
-
+const filesLength = cliInputs.length / 2;
+const inputs = cliInputs.slice(0, filesLength);
+const outputs = cliInputs.slice(filesLength);
 
 const typeTextHtml = `text/html`;
 
-const prefixFinal = `final-`;
 // todo use regex or better check for inlineHTMLRuntime.js inside src
-const devLoaderString = `<script type="module" src="../tools/inlineHTMLRuntime.js"></script>`;
-
+const devLoaderString = `<script type="module" src="../node_modules/html-sac/source/runTime/inlineHTMLRuntime.js"></script>`;
 // todo use  or better, check for inlineHTMLdebugHelper.css
-const devLoaderDebug = `<link rel="stylesheet" href="../tools/inlineHTMLdebugHelper.css">`;
+const devLoaderDebug = `<link rel="stylesheet" href="../node_modules/html-sac/source/runTime/inlineHTMLdebugHelper.css">`;
 // todo use this map
 // const map = {};
 
@@ -56,19 +56,17 @@ const inlineHTML = function (html, baseDir) {
     });
 };
 
-Promise.all(cliInputs.map(textFileContent))
+Promise.all(inputs.map(textFileContent))
     .then(function (originalHTMLStrings) {
         return Promise.all(originalHTMLStrings.map(function (originalHTMLString, i) {
             const withOutDevloader = originalHTMLString.replace(devLoaderString, ``)
                 .replace(devLoaderDebug, ``);
-            return inlineHTML(withOutDevloader, path.dirname(cliInputs[i]));
+            return inlineHTML(withOutDevloader, path.dirname(0, inputs[i]));
         }));
     }).then(function (newHTMLStrings) {
         return Promise.all(newHTMLStrings.map(function (newHTMLString, i) {
-            const oldPathParsed = path.parse(cliInputs[i]);
-            const newPath = path.join(oldPathParsed.dir, `${prefixFinal}${oldPathParsed.base}`);
             return writeTextInFile(
-                newPath,
+                outputs[i],
                 newHTMLString
             );
         }));
