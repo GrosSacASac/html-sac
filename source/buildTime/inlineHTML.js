@@ -1,4 +1,5 @@
-import { textFileContent, writeTextInFile } from "filesac";
+import { writeTextInFile } from "filesac";
+import fsPromises from "fs/promises";
 import path from "path";
 
 
@@ -32,7 +33,7 @@ const inlineHTML = function (html, baseDir) {
 
     return Promise.all(
         allMatches.map(function (match) {
-            return textFileContent(path.join(baseDir, match[1]));
+            return fsPromises.readFile(path.join(baseDir, match[1]), `utf-8`);
         }),
     ).then(function (importedHTMLs) {
         return Promise.all(
