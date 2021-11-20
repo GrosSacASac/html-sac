@@ -1,6 +1,6 @@
+import fsPromises from "node:fs/promises";
+import path from "node:path";
 import { writeTextInFile } from "filesac";
-import fsPromises from "fs/promises";
-import path from "path";
 
 
 const cliInputs = process.argv.slice(2);
