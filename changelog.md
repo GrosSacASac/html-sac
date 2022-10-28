@@ -1,9 +1,12 @@
 # Changelog
 
+## 4.0.0
+
+* Requires npm8+
 
 ## 3.0.0
 
- * Requires node 14+
+* Requires node 14+
 
 ## 2.0.0
 

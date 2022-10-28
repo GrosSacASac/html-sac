@@ -13,8 +13,8 @@
     "filesac": "^13.0.0"
   },
   "devDependencies": {
-    "eslint": "^7.17.0",
-    "eslint-config-red": "^1.8.1"
+    "eslint": "^8.26.0",
+    "eslint-config-red": "^1.9.1"
   },
   "eslintConfig": {
     "extends": [
