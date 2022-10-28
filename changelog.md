@@ -3,6 +3,7 @@
 ## 4.0.0
 
 * Requires npm8+
+* Requires node 18+
 
 ## 3.0.0
 

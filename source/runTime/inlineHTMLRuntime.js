@@ -17,7 +17,7 @@ const importHTML = function (startNode) {
             return;
         }
         let clone;
-        if (Object.prototype.hasOwnProperty.call(map, script.src)) {
+        if (Object.hasOwn(map, script.src)) {
             clone = map[script.src].cloneNode(true);
         } else {
             const request = new XMLHttpRequest();

@@ -56,7 +56,9 @@ const inlineHTML = function (html, baseDir) {
     });
 };
 
-Promise.all(inputs.map(textFileContent))
+Promise.all(inputs.map((filePath) => {
+        return fsPromises.readFile(filePath, `utf-8`);
+    }))
     .then(function (originalHTMLStrings) {
         return Promise.all(originalHTMLStrings.map(function (originalHTMLString, i) {
             const withOutDevloader = originalHTMLString.replace(devLoaderString, ``)
@@ -71,4 +73,4 @@ Promise.all(inputs.map(textFileContent))
             );
         }));
 
-    })
+    });
