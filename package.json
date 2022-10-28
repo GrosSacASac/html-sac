@@ -1,6 +1,6 @@
 {
   "name": "html-sac",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "html includes at runtime and buildtime",
   "license": "CC0-1.0",
   "type": "module",
